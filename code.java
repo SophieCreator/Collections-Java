@@ -93,30 +93,28 @@ public class Main {
 
     //Задание 3: Реализуй метод, который на вход примет ArrayList строк и удаляет из него все дубликаты,
     // не используя метод contains(). Можно использовать другие коллекции, которые были изучены на уроке.
-    public static void removeDuplicate(ArrayList<String> array) {
+    
+public static void removeDuplicateCheating(ArrayList<String> array) {
         if (array.isEmpty()){
             return;
         }
         LinkedHashSet<String> target = new LinkedHashSet<String>(array);
-        // cheating ?
-        // array.clear();
-        //array.addAll(target);
+        array.clear();
+        array.addAll(target);
+    }
 
-        Iterator<String> iter = target.iterator();
+    public static void removeDuplicate(ArrayList<String> array) {
+        if (array.isEmpty()){
+            return;
+        }
+        HashMap<String, Boolean> checker = new HashMap<>();
         int i = 0;
-        while (target.size() != array.size() & iter.hasNext()) {
-            String targetValue = iter.next();
-            while (array.get(i) != targetValue){
+        while (i != array.size()){
+            if (checker.get(array.get(i)) == null){
+                checker.put(array.get(i), true);
+                i++;
+            } else {
                 array.remove(i);
-            }
-            i++;
-            if (!iter.hasNext()){
-                System.out.println(i);
-                int j = array.size() - target.size();
-                while (j != 0) {
-                    array.remove(i);
-                    j--;
-                }
             }
         }
     }
