@@ -14,6 +14,7 @@ public class Main {
 
         //Task 2
         timeDifferenceOfArrayListAndLinkedList();
+        
         //Task 3
         ArrayList<String> array = new ArrayList<>();
         array.add("Cow");
@@ -29,6 +30,7 @@ public class Main {
         array.add("Cow");
         array.add("Cat");
         removeDuplicate(array);
+        //removeDuplicateCheating(array);
         System.out.println("Task 3\nAn array without duplicates " + array);
     }
 
