@@ -119,5 +119,25 @@ public static void removeDuplicateCheating(ArrayList<String> array) {
                 array.remove(i);
             }
         }
+    
+    public static void removeDuplicateOptimazed(ArrayList<String> array) {
+        if (array.isEmpty()){
+            return;
+        }
+        HashMap<String, Boolean> checker = new HashMap<>();
+        int j = 0;
+        for (int i = 0; i < array.size(); i++){
+            if (checker.get(array.get(i)) == null){
+                checker.put(array.get(i), true);
+                if (j != 0) {
+                    array.set(i - j, array.get(i));
+                }
+            } else {
+                j++;
+            }
+        }
+        for (int k = array.size() - 1; k > checker.size() - 1; k--){
+            array.remove(k);
+        }
     }
 }
